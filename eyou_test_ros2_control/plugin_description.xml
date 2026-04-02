@@ -1,0 +1,7 @@
+<library path="eyou_test_ros2_control">
+  <class name="eyou_test_ros2_control/EyouSystem"
+         type="eyou_test_ros2_control::EyouSystem"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>Eyou电机的ros2_control硬件接口</description>
+  </class>
+</library>

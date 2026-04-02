@@ -1,0 +1,48 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50  # 控制频率50Hz
+
+    # 加载的控制器列表
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    # 位置控制器（多关节）
+    position_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+# 关节状态广播器配置
+joint_state_broadcaster:
+  ros__parameters:
+    joints:
+      - motor_joint_13
+      - motor_joint_10
+    frame_id: base_link
+    rate: 100
+
+# 位置轨迹控制器配置
+position_controller:
+  ros__parameters:
+    joints:
+      - motor_joint_13
+      - motor_joint_10
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    allow_partial_joints_goal: false
+    open_loop_control: true
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.5
+      joint_13:
+        trajectory: 0.05
+        goal: 0.01
+        max_velocity: 8.00  
+        max_acceleration: 32.0  
+      joint_10:
+        trajectory: 0.05
+        goal: 0.01
+        max_velocity: 8.00  
+        max_acceleration: 32.0  

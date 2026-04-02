@@ -1,0 +1,38 @@
+    <!-- ====================== ros2_control 硬件接口配置 ====================== -->
+    <ros2_control name="EyouSystem" type="system">
+      <hardware>
+        <!-- 硬件插件名称（对应plugin_description.xml） -->
+        <plugin>eyou_test_ros2_control/EyouSystem</plugin>
+        <!-- 硬件参数：CAN接口和电机ID -->
+        <param name="can_interface">can0</param>
+        <param name="motor_ids">13,10</param>
+
+        <!-- 电机13的独立参数 (ID=13) -->
+        <param name="motor_13_speed">8.0</param>       
+        <param name="motor_13_torque">1.0</param>       
+        <param name="motor_13_accel">32.0</param>      
+        <param name="motor_13_decel">32.0</param>      
+        
+        <!-- 电机10的独立参数 (ID=10) -->
+        <param name="motor_10_speed">8.0</param>       
+        <param name="motor_10_torque">8.0</param>      
+        <param name="motor_10_accel">32.0</param>     
+        <param name="motor_10_decel">32.0</param>      
+      </hardware>
+
+      <!-- 电机1（ID 13）的接口定义 -->
+      <joint name="motor_joint_13">
+        <command_interface name="position"/>  
+        <state_interface name="position"/>    
+        <state_interface name="velocity"/>    
+        <state_interface name="effort"/>     
+      </joint>
+
+      <!-- 电机2（ID 10）的接口定义 -->
+      <joint name="motor_joint_10">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+    </ros2_control>

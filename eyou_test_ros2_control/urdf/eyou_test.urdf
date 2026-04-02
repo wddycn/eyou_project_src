@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="eyou_test">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 4.87271479064922E-19 0.025"
+        rpy="0 0 0" />
+      <mass
+        value="0.098174770424681" />
+      <inertia
+        ixx="3.5792885050665E-05"
+        ixy="0"
+        ixz="-1.18574757816703E-37"
+        iyy="3.5792885050665E-05"
+        iyz="2.86854741572313E-37"
+        izz="3.06796157577128E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eyou_test_ros2_control/urdf/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eyou_test_ros2_control/urdf/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="0.145073639685149 -2.34231672767898E-20 0.0185220919055448"
+        rpy="0 0 0" />
+      <mass
+        value="0.217809724509617" />
+      <inertia
+        ixx="6.06911379104774E-05"
+        ixy="2.89495801659071E-21"
+        ixz="-1.30522207489097E-21"
+        iyy="0.000611207345426506"
+        iyz="8.73347437482334E-22"
+        izz="0.000628998413091951" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eyou_test_ros2_control/urdf/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eyou_test_ros2_control/urdf/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="motor_joint_13"
+    type="revolute">
+    <origin
+      xyz="0 0 0.05"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="0.0992264907669502 0.017572859092566 0.00499999999999999"
+        rpy="0 0 0" />
+      <mass
+        value="0.119634954084936" />
+      <inertia
+        ixx="2.48982528598124E-05"
+        ixy="-3.13438599634792E-21"
+        ixz="-4.32236335917811E-21"
+        iyy="0.000575414460375842"
+        iyz="8.97854924089677E-24"
+        izz="0.000598318797334238" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eyou_test_ros2_control/urdf/link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eyou_test_ros2_control/urdf/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="motor_joint_10"
+    type="revolute">
+    <origin
+      xyz="0.19923 0.017573 0.06"
+      rpy="0 0 3.1416" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <!-- ====================== ros2_control 硬件接口配置 ====================== -->
+  <ros2_control name="EyouSystem" type="system">
+    <hardware>
+      <!-- 硬件插件名称（对应plugin_description.xml） -->
+      <plugin>eyou_test_ros2_control/EyouSystem</plugin>
+      <!-- 硬件参数：CAN接口和电机ID -->
+      <param name="can_interface">can0</param>
+      <param name="motor_ids">13,10</param>
+
+      <!-- 电机13的独立参数 (ID=13) -->
+      <param name="motor_13_speed">8.0</param>       
+      <param name="motor_13_torque">1.0</param>       
+      <param name="motor_13_accel">32.0</param>      
+      <param name="motor_13_decel">32.0</param>      
+      
+      <!-- 电机10的独立参数 (ID=10) -->
+      <param name="motor_10_speed">8.0</param>       
+      <param name="motor_10_torque">8.0</param>      
+      <param name="motor_10_accel">32.0</param>     
+      <param name="motor_10_decel">32.0</param>      
+    </hardware>
+
+    <!-- 电机1（ID 13）的接口定义 -->
+    <joint name="motor_joint_13">
+      <command_interface name="position"/>  
+      <state_interface name="position"/>    
+      <state_interface name="velocity"/>    
+      <state_interface name="effort"/>     
+    </joint>
+
+    <!-- 电机2（ID 10）的接口定义 -->
+    <joint name="motor_joint_10">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+  </ros2_control>
+</robot>

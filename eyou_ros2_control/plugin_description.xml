@@ -1,0 +1,9 @@
+<library path="eyou_ros2_control">
+  <class name="eyou_ros2_control/EyouSystem"
+         type="eyou_ros2_control::EyouSystem"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      ROS2 Control driver for Eyou CAN motors.
+    </description>
+  </class>
+</library>

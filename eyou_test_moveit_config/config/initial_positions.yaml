@@ -1,0 +1,5 @@
+# Default initial positions for eyou_test's ros2_control fake system
+
+initial_positions:
+  motor_joint_10: 0
+  motor_joint_13: 0
